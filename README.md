@@ -1,16 +1,14 @@
-### Hi there 👋
+### Ahoys! 👋
+- 🔭 I’m currently working on ...industry 4.0
+- 💬 Ask me about ... robots, robots, robots.
+- 📫 How to reach me: ... twitter @mmiscool
 
-<!--
-**mmiscool/mmiscool** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
+### Play with some of my current and past projects
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- https://Autodrop3d.com A cloud design and manufacturing platform prioritizing fully autonomous manufacturing
+- https://serialterminal.com Its a serial terminal in your web browser using the web serial api.
+- https://OpenSCAD.cloud A place to make and share OpenSCAD projects using a WASM port of OpenSCAD
+- https://ESP8266BASIC.com A fully self hosted browser based development environment for the ESP8266 micro controller using a custom BASIC interpreter.
+
+

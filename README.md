@@ -1,3 +1,4 @@
+[![mmiscool's Github Stats](https://github-readme-stats.vercel.app/api?username=mmiscool&show_icons=true&theme=highcontrast)](https://github.com/mmiscool)
 ### Ahoys! 👋
 - 🔭 I’m currently working on ...industry 4.0
 - 💬 Ask me about ... robots, robots, robots.
@@ -12,4 +13,4 @@
 - https://ESP8266BASIC.com A fully self hosted browser based development environment for the ESP8266 micro controller using a custom BASIC interpreter.
 
 
-[![mmiscool's Github Stats](https://github-readme-stats.vercel.app/api?username=mmiscool&show_icons=true&theme=radical)](https://github.com/mmiscool)
+

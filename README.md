@@ -1,4 +1,4 @@
-[![mmiscool's Github Stats](https://github-readme-stats.vercel.app/api?username=mmiscool&show_icons=true&theme=highcontrast)](https://github.com/mmiscool)
+[![mmiscool's Github Stats](https://github-readme-stats.vercel.app/api?username=mmiscool&show_icons=true&theme=neon)](https://github.com/mmiscool)
 ### Ahoys! 👋
 - 🔭 I’m currently working on ...industry 4.0
 - 💬 Ask me about ... robots, robots, robots.

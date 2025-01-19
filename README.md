@@ -12,7 +12,7 @@
 - https://serialterminal.com Its a serial terminal in your web browser using the web serial api.
 - https://OpenSCAD.cloud A place to make and share OpenSCAD projects using a WASM port of OpenSCAD
 - https://ESP8266BASIC.com A fully self hosted browser based development environment for the ESP8266 micro controller using a custom BASIC interpreter.
-- AiCoder A tool for using LLMs that inteligently merges LLM generated code snippets in to to exising javascript files without disturbing portions of the code not being activly modified. 
+- https://aiCoderProject.com AiCoder A tool for using LLMs that inteligently merges LLM generated code snippets in to to exising javascript files without disturbing portions of the code not being activly modified. 
 
 
 

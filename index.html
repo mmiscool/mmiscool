@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mmiscool | projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Projects and experiments in CAD, AI coding, embedded systems, robotics, and browser software.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230d1014'/%3E%3Ccircle cx='18' cy='18' r='7' fill='%23ff8a47'/%3E%3Cpath d='M16 42h32' stroke='%23e8edf2' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --bg-alt: #101419;
+            --panel: #11161c;
+            --panel-soft: #0e1318;
+            --ink: #e6ebf0;
+            --muted: #98a4af;
+            --line: rgba(230, 235, 240, 0.12);
+            --line-strong: rgba(230, 235, 240, 0.2);
+            --accent: #ff8a47;
+            --font-mono: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            --max-width: 980px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--bg);
+            font-family: var(--font-mono);
+            font-variant-ligatures: none;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(100% - 32px, var(--max-width));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            border-bottom: 1px solid var(--line);
+            background: rgba(11, 13, 16, 0.94);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+            z-index: 10;
+        }
+
+        .topbar {
+            min-height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .brand::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .topnav {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .topnav a,
+        .inline-link {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .topnav a:hover,
+        .inline-link:hover,
+        .project-links a:hover {
+            color: var(--ink);
+        }
+
+        main {
+            padding: 34px 0 72px;
+        }
+
+        .intro {
+            padding: 10px 0 24px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .intro-mark {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        ul {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.12;
+            margin-bottom: 18px;
+        }
+
+        .intro p {
+            max-width: 72ch;
+            color: var(--muted);
+        }
+
+        .intro-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .intro-links a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .intro-links a::before {
+            content: "[";
+            color: var(--muted);
+        }
+
+        .intro-links a::after {
+            content: "]";
+            color: var(--muted);
+        }
+
+        .section-block {
+            padding-top: 28px;
+            margin-top: 28px;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-head {
+            margin-bottom: 16px;
+        }
+
+        .section-index {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+
+        .section-head h2 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            max-width: 70ch;
+        }
+
+        .project-list {
+            border-top: 1px solid var(--line);
+        }
+
+        .project-row {
+            display: grid;
+            grid-template-columns: minmax(170px, 220px) minmax(0, 1fr) auto;
+            gap: 16px 22px;
+            align-items: start;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .project-title {
+            min-width: 0;
+        }
+
+        .project-title h3 {
+            font-size: 1.02rem;
+            margin-bottom: 6px;
+        }
+
+        .project-meta {
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .project-description {
+            color: var(--muted);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .project-links a {
+            color: var(--muted);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .project-links a::before {
+            content: "[";
+            color: var(--line-strong);
+        }
+
+        .project-links a::after {
+            content: "]";
+            color: var(--line-strong);
+        }
+
+        footer {
+            padding: 0 0 40px;
+        }
+
+        .footer-line {
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 780px) {
+            .topbar {
+                padding: 12px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .topnav {
+                gap: 10px 16px;
+                justify-content: flex-start;
+            }
+
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .project-links {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container topbar">
+            <a class="brand" href="#top">mmiscool</a>
+
+            <nav class="topnav" aria-label="Primary">
+                <a href="#featured">projects</a>
+                <a href="#browser-tools">browser tools</a>
+                <a href="#hardware">hardware</a>
+                <a href="#platforms">platforms</a>
+                <a href="https://github.com/mmiscool" target="_blank" rel="noreferrer">github</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="container">
+            <section class="intro" aria-label="Introduction">
+                <p class="intro-mark">// projects and experiments</p>
+                <h1>CAD, AI coding, robotics, embedded systems, and browser tools.</h1>
+                <p>
+                    This is a list of projects I have built or worked on. Most of them are browser based.
+                    A lot of the work is around CAD, developer tools, automation, and embedded systems.
+                </p>
+                <div class="intro-links">
+                    <a href="https://github.com/mmiscool" target="_blank" rel="noreferrer">github.com/mmiscool</a>
+                    <a href="#featured">jump to projects</a>
+                </div>
+            </section>
+
+            <section class="section-block" id="featured">
+                <div class="section-head">
+                    <div class="section-index">01 / projects</div>
+                    <h2>featured</h2>
+                    <p>Some of the larger or more complete projects.</p>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>BREP.io</h3>
+                            <div class="project-meta">parametric cad</div>
+                        </div>
+                        <p class="project-description">Browser based parametric CAD modeling system and BREP kernel.</p>
+                        <div class="project-links">
+                            <a href="https://brep.io" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/mmiscool/BREP" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>aiCoder</h3>
+                            <div class="project-meta">ai coding</div>
+                        </div>
+                        <p class="project-description">AI assisted development tool that merges generated code snippets into existing JavaScript files using AST transformations.</p>
+                        <div class="project-links">
+                            <a href="https://aicoderproject.com" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/mmiscool/aiCoder" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>aiFiddle</h3>
+                            <div class="project-meta">browser editor</div>
+                        </div>
+                        <p class="project-description">Browser based AI code editor with live preview.</p>
+                        <div class="project-links">
+                            <a href="https://aifiddle.aicoderproject.com" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/mmiscool/aiFiddle" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block" id="browser-tools">
+                <div class="section-head">
+                    <div class="section-index">02 / browser tools</div>
+                    <h2>browser tools</h2>
+                    <p>Tools built around browser APIs, local files, screen capture, serial devices, and WASM.</p>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>screenCap.me</h3>
+                            <div class="project-meta">screen capture</div>
+                        </div>
+                        <p class="project-description">Client side screen recorder with trimming and clip merging.</p>
+                        <div class="project-links">
+                            <a href="https://screencap.me" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/mmiscool/screencap.me" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>vid2gif.net</h3>
+                            <div class="project-meta">video to gif</div>
+                        </div>
+                        <p class="project-description">Browser based video to GIF converter.</p>
+                        <div class="project-links">
+                            <a href="https://vid2gif.net/" target="_blank" rel="noreferrer">site</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>EditMe.cloud</h3>
+                            <div class="project-meta">browser editor</div>
+                        </div>
+                        <p class="project-description">A tabbed browser editor that can edit local files using the browser filesystem API.</p>
+                        <div class="project-links">
+                            <a href="https://editme.cloud" target="_blank" rel="noreferrer">site</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>SerialTerminal</h3>
+                            <div class="project-meta">web serial</div>
+                        </div>
+                        <p class="project-description">Serial terminal running in the browser using the Web Serial API.</p>
+                        <div class="project-links">
+                            <a href="https://serialterminal.com" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/Autodrop3d/serialTerminal.com" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>OpenSCAD.cloud</h3>
+                            <div class="project-meta">wasm cad</div>
+                        </div>
+                        <p class="project-description">Create and share OpenSCAD models in the browser using a WASM build of OpenSCAD.</p>
+                        <div class="project-links">
+                            <a href="https://openscad.cloud" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/Autodrop3d/openscad.cloud" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block" id="hardware">
+                <div class="section-head">
+                    <div class="section-index">03 / embedded and hardware</div>
+                    <h2>embedded and hardware</h2>
+                    <p>Projects around microcontrollers, browser based tooling, and device work.</p>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>ESP8266 BASIC</h3>
+                            <div class="project-meta">microcontroller tooling</div>
+                        </div>
+                        <p class="project-description">Browser based development environment and BASIC interpreter for the ESP8266 microcontroller.</p>
+                        <div class="project-links">
+                            <a href="https://esp8266basic.com" target="_blank" rel="noreferrer">site</a>
+                            <a href="https://github.com/mmiscool/esp8266Basic" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block" id="utilities">
+                <div class="section-head">
+                    <div class="section-index">04 / utilities</div>
+                    <h2>other tools</h2>
+                    <p>Smaller utilities and side projects.</p>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>ShitDeck</h3>
+                            <div class="project-meta">automation surface</div>
+                        </div>
+                        <p class="project-description">Its like Stream deck but crappier and free.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mmiscool/ShitDeck" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>FC-Docker</h3>
+                            <div class="project-meta">cloud cad</div>
+                        </div>
+                        <p class="project-description">Run FreeCAD in the cloud and access it through a web browser.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mmiscool/FC-Docker" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>SchematicCreator</h3>
+                            <div class="project-meta">pcb experiment</div>
+                        </div>
+                        <p class="project-description">Experimental browser based schematic capture and PCB design tool.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mmiscool/SchematicCreator" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block" id="platforms">
+                <div class="section-head">
+                    <div class="section-index">05 / platforms and collaborations</div>
+                    <h2>platforms and collaborations</h2>
+                    <p>Broader platform work and collaborations.</p>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>Autodrop3d</h3>
+                            <div class="project-meta">manufacturing platform</div>
+                        </div>
+                        <p class="project-description">Cloud design to manufacturing platform focused on autonomous production workflows.</p>
+                        <div class="project-links">
+                            <a href="https://autodrop3d.com" target="_blank" rel="noreferrer">site</a>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-title">
+                            <h3>jsketcher (collaboration)</h3>
+                            <div class="project-meta">collaboration</div>
+                        </div>
+                        <p class="project-description">Open source browser based parametric CAD modeler.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/xibyte/jsketcher" target="_blank" rel="noreferrer">github</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-line">
+            More projects: <a class="inline-link" href="https://github.com/mmiscool" target="_blank"
+                rel="noreferrer">github.com/mmiscool</a>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -6,6 +6,7 @@
 
 
 ### Play with some of my current and past projects
+- https://next.BREP.io The best BREP kernel and CAD application available today. 
 - https://screenCap.me A browser based screen and web cam recording tool that is completely private working client side in the browser allowing you to capture, trim and combine screen capture clips in to a final video all without installing or any 3rd party dependencies. 
 - https://Autodrop3d.com A cloud design and manufacturing platform prioritizing fully autonomous manufacturing
 - https://github.com/xibyte/jsketcher An Open Source browser based Parametric feature history and sketch based CAD modeler that I collaborate on. 
